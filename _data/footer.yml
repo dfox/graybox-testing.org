@@ -1,0 +1,19 @@
+# Footer navigation links
+
+- title: Home
+  url: /
+
+- title: What
+  url: /what/
+
+- title: Specifications
+  url: /specifications/
+
+- title: Tests
+  url: /tests/
+
+- title: Tools
+  url: /tools/
+
+- title: About
+  url: /about/

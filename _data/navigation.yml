@@ -1,0 +1,26 @@
+# Site navigation links
+
+- title: What
+  url: /what/
+  excerpt: "What is graybox testing?"
+  image: 400x250.gif
+
+- title: Specifications
+  url: /specifications/
+  excerpt: "How to write specifications"
+  image: 400x250.gif
+
+- title: Tests
+  url: /tests/
+  excerpt: "How to write tests"
+  image: 400x250.gif
+
+- title: Tools
+  url: /tools/
+  excerpt: "Tools for graybox testing"
+  image: 400x250.gif
+
+- title: About
+  url: /about/
+  excerpt: "What is this all about anyways?"
+  image: 400x250.gif
