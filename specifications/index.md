@@ -12,7 +12,7 @@ share: false
 ads: false
 ---
 
-Functional specifications are at the heart of graybox testing. In
+Functional specifications are at the heart of gray box testing. In
 order to know what to test, you first need to know what the
 application is supposed to do. The easiest way to do that is to write
 a minimal functional specification for each feature.

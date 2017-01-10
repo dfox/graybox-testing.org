@@ -8,10 +8,10 @@ image:
 <div class="tiles">
 
 <div class="tile">
-  <h2 class="post-title">What is Graybox Testing?</h2>  
+  <h2 class="post-title">What is Gray Box Testing?</h2>  
 
-  <p class="post-excerpt">Greybox testing is a hybrid of whitebox and
-  blackbox testing. Tests are driven by the user interface, but have
+  <p class="post-excerpt">Grey box testing is a hybrid of white box and
+  black box testing. Tests are driven by the user interface, but have
   some knowledge of system internals. <a href="/what/">Learn
   about graybox testing</a></p>
   
