@@ -102,9 +102,29 @@ contains the pure business logic, while the adapters each serve a
 specific *purpose*, generally to perform side effects. A thin "service
 layer" coordinates how the adapters and core interact. This allows
 different *technologies* to be plugged into the application to serve
-those different purposes. 
+those different purposes. With this architecure, tests can reuse the
+adapters to perform the validation of the side effects which occur in
+an interaction. This is generally what a black box test lacks.
 
-With ports and adapters architecure, tests can reuse the adapters to
-perform the validation of the side effects which occur in an
-interaction. This is generally what a black box test lacks.
+In order for the tests to have access to the adapters, it's important
+to modularize the codebase and keep each type of technology in a
+separate module. For example, if the application has a set of adapters
+for data access, and those are implemented in DatabaseXYZ, there
+should be a DatabaseXYZ-specific module containing those
+implementations. Then, in order to validate that data access was
+performed correctly, a test can simply import that module and use its
+API to perform the validation. This has the advantage that if a new
+adapter is written, the test need not be updated. It can simply import
+the new adapter implementation and the test should still pass.
+
+In order to ensure the adapters function correctly, the developer must
+write white box tests for each of their API functions. In the data
+access example above, the test should ensure that when the function is
+called with a specific input, that the database table(s) are updated
+correctly.
+
+
+
+
+
 
