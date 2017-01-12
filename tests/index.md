@@ -76,7 +76,7 @@ Nightwatch test via a simple function call.
 
 For this test, we need to coordinate both the name and note content
 between the front and backend, so the test data, saved in a file
-called notes.json, looks like this:
+called **notes.json**, looks like this:
 
 ```json
 {
@@ -94,8 +94,8 @@ The frontend and backend developers will also need to agree on the
 name of the test group and the name of the test to be performed on the
 backend so Nightwatch can call it. The JUnit HTTP backend exposes the
 canonical name of the test class as the test group. So the test group
-will be "*io.dfox.junit.http.example.ExampleTest*". The name of the test
-will be "*noteSaved*".
+will be **io.dfox.junit.http.example.ExampleTest**. The name of the test
+will be **noteSaved**.
 
 #### Write Frontend Test
 
@@ -122,9 +122,9 @@ module.exports = {
 ```
 
 In this test, the test data is loaded first by calling the
-loadTestData() function with the name of the test data file, in this
-case notes.json. The plugin takes care of calling the backend and
-makes the data available to the test run from its callback.
+**loadTestData()** function with the name of the test data file, in this
+case **notes.json**. The plugin takes care of calling the backend and
+makes the data available to the test run via its callback.
 
 Next comes the Nightwatch code which duplicates the steps in the
 specification. You can see how the test data is referenced in the
@@ -133,7 +133,7 @@ test.
 #### Write Backend Test
 
 Near the end of the Nightwatch test, the backend test is called by
-calling the assert.remote() function with the test group and name the
+calling the **assert.remote()** function with the test group and name the
 developers agreed to before. This makes an HTTP call to the backend
 which runs the test and reports its results to the plugin. The java
 test looks like this:
@@ -155,8 +155,13 @@ public void noteSaved() throws IOException {
 }
 ```
 
-Note how the test data is reused in the Java test. This makes the
-tests less brittle, as the information is only specified in one place.
+Note how the test data is reused in the Java test by calling
+**getTestData()**. This makes the tests less brittle, as the
+information is only specified in one place. Also, the data access
+adapter, referenced here as **repository**, is used to get the note to
+assert it's name and contents. This makes the backend test independent
+of that implementation, and also allows that code to be reused rather
+than duplicated in the test.
 
 If the Java test is successful, the Nightwatch test will
 pass. Otherwise, a stacktrace will be sent back to Nightwatch so it
