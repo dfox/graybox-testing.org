@@ -16,8 +16,8 @@ In order to know what to test, there must first be a description of
 what the application is supposed to do. The easiest way to do that is
 with a functional specification that describes each feature. In order
 for the specification to be useful as a basis for an automated test
-and as a script for a human quality assurance person, we've chosen a
-simple format that serves both purposes.
+and as a script for a human quality assurance person, it's written in
+a simple format that serves both purposes.
 
 ## Design by Contract
 
@@ -43,26 +43,33 @@ The following example, which is included with [the tools](/tools/)
 available on this site, shows how design by contract can be realized
 in a simple format. It is for a simple note taking application:
 
-#### Pre-conditions
+### Scenario
+
+* Save a note with a custom name
+
+### Pre-conditions
 * A note with the name "my-note" does not exist
 
-#### Steps
+### Steps
 * Browse to URL http://localhost/notes
 * Set the name of the note to "my-note"
 * Set the contents of the note to "This is my note"
 * Click "Save"
 * Assert that the status message changes to "Saved note: my-note"
 
-#### Post-conditions
+### Post-conditions
 * A note with the name "my-note" exists and contains the content "This
   is my note"
 
-The specification is very simple and lightweight, and contains enough
-information to both implement the functionality and write a test for
-it. There will be other artifacts needed to implement a feature like
-this, for example designs for the user interface, but this format
-provides the minimal information.
+This specification format is very simple and lightweight, and contains
+enough information to both implement the functionality and write a
+test for it. There will be other artifacts needed to implement a
+feature like this, for example designs for the user interface, but
+this format provides the minimal information needed.
 
+Once the specification is written, it can be archived as a description
+of the application's features, used as a script for a human quality
+assurance person, and converted to an [automated test](/tests/).
 
 
 

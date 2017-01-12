@@ -12,10 +12,28 @@ share: false
 ads: false
 ---
 
-Once you have your functional specification, it's easy to turn that
-into a test. We'll show you how to do that on each major platform.
+Once a functional specification is written, it can be used to write an
+automated test. The test will be written to automate the steps in the
+specification exactly as the user would perform them in the user
+interface. The preconditions and side effect assertions are set up and
+tested using the same language and platform the application is written
+in.
 
-## Web Browsers
+The libraries for user interface testing on mobile devices are
+unfortunately not as mature as what is available for web
+applications. When mature solutions exist for iOS and Android, they
+will be added here.
 
-The tool we recommend for testing web applications that are used from
-a web browser is with Nightwatch, a Node-based frontend for Selenium.
+## Web Applications
+
+The most mature testing tool for web applications is
+[Selenium](http://docs.seleniumhq.org). These days, front-end
+developers are very fluent in
+[Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+and [NodeJS](https://nodejs.org), and since they are the ones who will
+be creating the user interface, they should be the ones writing the
+user interface tests. There is a fantastic, NodeJS-based frontend for
+Selenium called [Nightwatch](http://nightwatchjs.org) which provides a
+fluent, Javascript-based interface. This makes it very easy to convert
+a functional specification into an automated test.
+

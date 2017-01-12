@@ -73,6 +73,8 @@ a hybrid of both white box and black box testing. Tests perform the
 steps of an interaction "from the outside", but also validate the
 changes that occur to the application's state "on the inside".
 
+### Test-Friendly Architecture
+
 In the type of gray box test promoted here, the test has access to the
 modules in an application which perform the side effects and have
 access to its data. One common way to do this is by using an
@@ -88,6 +90,8 @@ those different purposes. With this architecure, tests can reuse the
 adapters to perform validation of the side effects which occur in an
 interaction. This is generally what a black box test lacks.
 
+### Modularization
+
 In order for the tests to have access to the adapters, it's important
 to modularize the codebase and keep each type of technology in a
 separate module. For example, if the application has a set of adapters
@@ -100,13 +104,17 @@ adapter is written, the test need not be updated. It can simply import
 the new adapter implementation and the test should still pass. By
 using
 [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection),
-this can even be done simply by configuration.
+this can be done simply by configuration.
+
+### Adapter Testing
 
 To ensure the adapters function correctly, the developer must write
 white box tests for each of their API functions. In the data access
 example above, the test should ensure that when the function is called
 with a specific input, that the database table(s) are updated
 correctly.
+
+### Test Automation
 
 Modern [tools](/tools/) can be used to automate these kinds of
 tests. This significantly decreases the cost of running the tests
