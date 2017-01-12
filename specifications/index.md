@@ -14,16 +14,19 @@ ads: false
 
 In order to know what to test, you first need to know what the
 application is supposed to do. The easiest way to do that is to write
-a minimal functional specification for each feature.
+a functional specification for each feature. In order for the
+specification to be useful both as a basis for an automated test and
+also as a script for a human quality assurance person, we've chosen a
+simple format that serves both purposes.
 
 ## Design by Contract
 
-We prefer a type of functional specification commonly known as
-[design by contract](https://en.wikipedia.org/wiki/Design_by_contract).
-The specification outlines the steps a user performs in the
-application for a single interaction and how the interaction affects
-the application's state. We can think about an interaction with an
-application having the following properties:
+A
+[design by contract](https://en.wikipedia.org/wiki/Design_by_contract)
+specification outlines the steps a user performs in the application
+for a single interaction and how the interaction affects the
+application's state. In one variation, an interaction with an
+application has the following properties:
 
 * **Pre-conditions:** The state of the application before the interaction
 * **Input:** The information transferred into the application from the interaction
@@ -31,14 +34,11 @@ application having the following properties:
 * **Output:** The output from the application in response to the input
 * **Post-conditions:** The state of the application after the interaction
 
-Thinking about these properties of an interaction, we can specify the
-interaction with a simple format that captures the information we need
-in a format that matches well with how tests are written.
-
 ## Example
 
-Here's an example specification for one of the example programs
-included with our tools:
+The following example, which is included with [the tools](/tools/)
+available on this site, combines these aspects into a simple
+format. It is for a simple note taking application:
 
 #### Pre-conditions
 * A note with the name "my-note" does not exist
@@ -56,5 +56,9 @@ included with our tools:
 
 As you can see, the specification is very simple and lightweight, and
 contains enough information to implement the functionality and also
-write a test for it.
+write a test for it. There will be other artifacts required for
+actually implementing a feature like this, for example designs for the
+user interface, but this is the minimal information needed.
+
+
 
