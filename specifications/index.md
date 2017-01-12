@@ -12,11 +12,11 @@ share: false
 ads: false
 ---
 
-In order to know what to test, you first need to know what the
-application is supposed to do. The easiest way to do that is to write
-a functional specification for each feature. In order for the
-specification to be useful both as a basis for an automated test and
-also as a script for a human quality assurance person, we've chosen a
+In order to know what to test, there must first be a description of
+what the application is supposed to do. The easiest way to do that is
+with a functional specification that describes each feature. In order
+for the specification to be useful as a basis for an automated test
+and as a script for a human quality assurance person, we've chosen a
 simple format that serves both purposes.
 
 ## Design by Contract
@@ -34,11 +34,14 @@ application has the following properties:
 * **Output:** The output from the application in response to the input
 * **Post-conditions:** The state of the application after the interaction
 
+This allows a feature to be described in clear, concrete terms in the
+simplest way possible.
+
 ## Example
 
 The following example, which is included with [the tools](/tools/)
-available on this site, combines these aspects into a simple
-format. It is for a simple note taking application:
+available on this site, shows how design by contract can be realized
+in a simple format. It is for a simple note taking application:
 
 #### Pre-conditions
 * A note with the name "my-note" does not exist
@@ -54,11 +57,12 @@ format. It is for a simple note taking application:
 * A note with the name "my-note" exists and contains the content "This
   is my note"
 
-As you can see, the specification is very simple and lightweight, and
-contains enough information to implement the functionality and also
-write a test for it. There will be other artifacts required for
-actually implementing a feature like this, for example designs for the
-user interface, but this is the minimal information needed.
+The specification is very simple and lightweight, and contains enough
+information to both implement the functionality and write a test for
+it. There will be other artifacts needed to implement a feature like
+this, for example designs for the user interface, but this format
+provides the minimal information.
+
 
 
 
