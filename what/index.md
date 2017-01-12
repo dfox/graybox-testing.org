@@ -52,24 +52,6 @@ does not have knowledge of, and therefore cannot validate, the
 internal state of the application, other than what can be inferred
 from the user interface itself.
 
-With modern [tools](/tools/), these kinds of tests can be
-automated. This significantly decreases the cost of running the tests
-regularly. However, even if they are automated, it's important to test
-manually as well. Automated tests can verify functionality, but can't
-tell if a user interface element is misaligned or a button can't be
-pressed because of a
-[z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)
-bug. Therefore it's important to have a way to share a test between
-both humans and computers. That way automated tests can be run
-regularly, while the human tests can be run at critical junctures,
-such as before a release.
-
-A specification provides the basis for an automated test as well as
-functioning as a script for human quality assurance. There are many
-ways to write a specification, but we have a simple format that is
-easy to read and understand, and can be used for both purposes. We'll
-cover that in the [next section](/specifications/).
-
 ## White Box Testing
 
 [White box testing](https://en.wikipedia.org/wiki/White-box_testing)
@@ -120,11 +102,30 @@ using
 [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection),
 this can even be done simply by configuration.
 
-In order to ensure the adapters function correctly, the developer must
-write white box tests for each of their API functions. In the data
-access example above, the test should ensure that when the function is
-called with a specific input, that the database table(s) are updated
-correctly. 
+To ensure the adapters function correctly, the developer must write
+white box tests for each of their API functions. In the data access
+example above, the test should ensure that when the function is called
+with a specific input, that the database table(s) are updated
+correctly.
+
+Modern [tools](/tools/) can be used to automate these kinds of
+tests. This significantly decreases the cost of running the tests
+regularly. However, even if they are automated, it's important to test
+manually as well. Automated tests can verify functionality, but can't
+tell if a user interface element is misaligned or a button can't be
+pressed because of a
+[z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)
+bug. Therefore it's important to have a way to share a test between
+both humans and computers. That way automated tests can be run
+regularly, while the human tests can be run at critical junctures,
+such as before a release.
+
+A specification provides the basis for an automated test as well as
+functioning as a script for human quality assurance. There are many
+ways to write a specification, but there is a simple format that is
+easy to read and understand, and can be used for both purposes. That
+is covered in the [next section](/specifications/).
+
 
 
 
