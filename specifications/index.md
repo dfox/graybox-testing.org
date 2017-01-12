@@ -44,12 +44,17 @@ included with our tools:
 * A note with the name "my-note" does not exist
 
 #### Steps
-* Browse to URL http://localhost:8082
+* Browse to URL http://localhost/notes
 * Set the name of the note to "my-note"
 * Set the contents of the note to "This is my note"
 * Click "Save"
-* Assert that the status says "Saved note: my-note"
+* Assert that the status message changes to "Saved note: my-note"
 
 #### Post-conditions
 * A note with the name "my-note" exists and contains the content "This
   is my note"
+
+As you can see, the specification is very simple and lightweight, and
+contains enough information to implement the functionality and also
+write a test for it.
+
