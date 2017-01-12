@@ -48,18 +48,18 @@ in a simple format. It is for a simple note taking application:
 * Save a note with a custom name
 
 ### Pre-conditions
-* A note with the name "my-note" does not exist
+* A note with the name "save-note" does not exist
 
 ### Steps
 * Browse to URL http://localhost/notes
-* Set the name of the note to "my-note"
-* Set the contents of the note to "This is my note"
+* Set the name of the note to "save-note"
+* Set the contents of the note to "This is my saved note"
 * Click "Save"
-* Assert that the status message changes to "Saved note: my-note"
+* Assert that the status message changes to "Saved note: save-note"
 
 ### Post-conditions
-* A note with the name "my-note" exists and contains the content "This
-  is my note"
+* A note with the name "save-note" exists and contains the content
+  "This is my saved note"
 
 This specification format is very simple and lightweight, and contains
 enough information to both implement the functionality and write a
