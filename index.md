@@ -39,9 +39,10 @@ image:
 <div class="tile">
   <h2 class="post-title">Testing Tools</h2>
 
-  <p class="post-excerpt">We've built tools for popular frameworks and
-  testing platforms which enable this style of testing. 
-  <a href="/tools/">Download tools and libraries to help you test</a></p>
+  <p class="post-excerpt">Tools for popular frameworks and testing
+  platforms which enable this style of testing.
+  <a href="/tools/">Download tools and libraries to help you
+  test</a></p>
 
 </div><!-- /.tile -->
 
