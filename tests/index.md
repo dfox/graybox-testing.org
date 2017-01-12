@@ -68,8 +68,8 @@ in the previous section.
 At this point, if the frontend and backend developers are different
 people, there must be some agreement on how to coordinate the test
 data that will be used. Because the backend test will need to assert
-the presence of note on the server, and test that its name and content
-are correct, it makes sense to have those available to both
+the presence of a note on the server, and test that its name and
+content are correct, it makes sense to have those available to both
 tests. Test data is simply a set of [JSON](http://json.org) files
 which are exposed by the test backend and are available in the
 Nightwatch test via a simple function call.
@@ -121,22 +121,21 @@ module.exports = {
 }
 ```
 
-In this test, the test data is loaded first by calling the
-**loadTestData()** function with the name of the test data file, in this
-case **notes.json**. The plugin takes care of calling the backend and
-makes the data available to the test run via its callback.
-
-Next comes the Nightwatch code which duplicates the steps in the
+The test data is loaded first by calling the **loadTestData()**
+function with the name of the test data file, in this case,
+**notes.json**. The plugin takes care of calling the backend and makes
+the data available to the test executed via its callback. Next comes
+the Nightwatch code which duplicates the steps in the
 specification. You can see how the test data is referenced in the
 test.
 
 #### Write Backend Test
 
-Near the end of the Nightwatch test, the backend test is called by
-calling the **assert.remote()** function with the test group and name the
-developers agreed to before. This makes an HTTP call to the backend
-which runs the test and reports its results to the plugin. The java
-test looks like this:
+Near the end of the Nightwatch test, the backend test is executed by
+calling the **assert.remote()** function with the test group and name
+the developers agreed to before. This makes an HTTP call to the
+backend which runs the test and reports its results to the plugin. The
+java test looks like this:
 
 ```java
 @Test
@@ -159,7 +158,7 @@ Note how the test data is reused in the Java test by calling
 **getTestData()**. This makes the tests less brittle, as the
 information is only specified in one place. Also, the data access
 adapter, referenced here as **repository**, is used to get the note to
-assert it's name and contents. This makes the backend test independent
+assert its name and contents. This makes the backend test independent
 of that implementation, and also allows that code to be reused rather
 than duplicated in the test.
 
