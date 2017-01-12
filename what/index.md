@@ -28,10 +28,10 @@ development, such as unit testing. Those are still valuable. However,
 as the number of tests increase, there tends to be diminishing
 returns. The cost of complete test coverage at every layer of the
 application may be justified for software which runs an insulin
-pump. However, a non-critical business application probably doesn't
-have the same requirements. Both applications need to be tested to
-ensure they work as intended, so there must be a minimal set of tests
-we can use to validate that functionality.
+pump. A non-critical business application probably doesn't have the
+same requirements. Both applications need to be tested to ensure they
+work as intended, so there must be a minimal set of tests we can use
+to validate that functionality.
 
 We believe that a specific style of gray box testing is the most
 minimal, yet thorough, type of functional test. Before we go into
