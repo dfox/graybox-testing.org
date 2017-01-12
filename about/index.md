@@ -21,3 +21,9 @@ highest benefit over time. After I left Cantina, I decided to put this
 site up as a resource for others to see if they would get the same
 benefit that I did.
 
+## How You Can Help
+
+Do you have something to add? A tool, more content, a correction? I'd
+love to have your input. Send me a
+[pull request](https://github.com/dfox/graybox-testing.org) and I'll
+add it to the site!

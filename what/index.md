@@ -44,22 +44,21 @@ In
 [black box testing](https://en.wikipedia.org/wiki/Black-box_testing),
 the application is tested "from outside", without any knowledge of how
 the system functions internally. This is often done via the user
-interface, but could also be a unit test at a deeper layer of an
-application. For the purposes of this site, we'll focus on user
-interface testing.
+interface, but could also be at a deeper layer of an application. For
+the purposes of this site, we'll focus on user interface testing.
 
-A black box test validates that given a series of steps that a user
-performs in an application, that the user interface responds as
-intended. It does not have knowledge of, and therefore cannot
-validate, the internal state of the application, other than can be
-inferred from the user interface itself. 
+A black box test validates a series of steps that a user performs in
+an application and that the user interface responds as intended. It
+does not have knowledge of, and therefore cannot validate, the
+internal state of the application, other than can be inferred from the
+user interface itself.
 
 With modern tools, these kinds of tests can be automated. This
 significantly decreases the cost of running the tests
-regularly. However, even if they can be automated, it's often
-advisable to test manually as well.  Automated tests can verify
-functionality, but can't tell if a user interface element is
-misaligned or a button can't be pressed because of a
+regularly. However, even if they are automated, it's important to test
+manually as well. Automated tests can verify functionality, but can't
+tell if a user interface element is misaligned or a button can't be
+pressed because of a
 [z-index](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index)
 bug. Therefore it's important to have a way to share a test between
 both humans and computers. That way automated tests can be run
@@ -78,12 +77,13 @@ that in the [next section](/specifications/).
 is more concerned about the internals of an application, including its
 data structures, algorithms, and the paths the code takes during
 operation. In order to write these kinds of tests, a developer must
-have intimate knowledge of the application source code. These kinds of
-tests tend to be very brittle, as they are highly coupled to the code
-itself. Though white box tests may be able to ensure all code paths
-function properly, they tend to miss areas which lack sufficient
-specification. Depending on what level they test at, they can also
-miss issues which arise when modules are fully integrated together.
+have intimate knowledge of the application source code and the
+different systems involved. They tend to be more brittle, as they are
+tightly coupled to the code itself. However, in order to really
+validate that an application functions as intended, the tests need
+some knowledge of its internals. They key is to minimize that
+knowledge and write the tests in such a way that changes to the tests
+are minimized as the source code changes.
 
 ## Gray Box Testing
 
