@@ -12,14 +12,13 @@ share: false
 ads: false
 ---
 
-Testing is one of those software development practices which for some
-reason
-[gets contentious](https://martinfowler.com/articles/is-tdd-dead/).
-Almost all developers believe that testing is important, but not all
-agree on which testing strategy is the most effective.
+Testing is one of those software development practices that there are
+a lot of [opinions](https://martinfowler.com/articles/is-tdd-dead/)
+about. Almost all developers believe that testing is important, but
+not all agree on which testing strategy is the most effective.
 
-Rather than try to push a particular strategy as *best*, we'll focus
-on a kind of test we feel an application should have at a bare
+Rather than try to push a particular strategy as *best*, this site
+focuses on a kind of test an application should have at a bare
 *minimum*: a functional test. This kind of test validates the steps a
 user takes in an application to perform a task and how those steps
 affect the state of the application. It is not a replacement for other
@@ -33,8 +32,8 @@ same requirements. Both applications need to be tested to ensure they
 work as intended, so there must be a minimal set of tests we can use
 to validate that functionality.
 
-We believe that a specific style of gray box testing is the most
-minimal, yet thorough, type of functional test. Before we go into
+The specific style of gray box testing described on this site is the
+most minimal, yet thorough, type of functional test. Before we go into
 details, we'll need to discuss the far ends of the spectrum: black box
 and white box testing.
 
@@ -87,14 +86,25 @@ are minimized as the source code changes.
 
 ## Gray Box Testing
 
-[Gray box](https://en.wikipedia.org/wiki/Gray_box_testing) is a hybrid
-of both white and black box testing. Tests are driven by the user
-interface, but also have some knowledge of system internals. That
-knowledge is used to validate the changes to the system which would
-not otherwise be visible to a black box test. However, that knowledge
-is limited in scope to only the changes to the state of the
-application.
+[Gray box testing](https://en.wikipedia.org/wiki/Gray_box_testing) is
+a hybrid of both white box and black box testing. Tests perform the
+steps of an interaction "from the outside", but also validate the
+changes that occur to the application's state "on the inside".
 
-In the type of gray box test we promote, the test has access to the
-modules in an application which perform the side effects. 
+In the type of gray box test promoted here, the test has access to the
+modules in an application which perform the side effects and have
+access to its data. One common way to do this is by using an
+architectural pattern called
+[ports and adapters](http://alistair.cockburn.us/Hexagonal+architecture)
+(otherwise known as hexagonal). In this pattern, there is an
+application core surrounded by a set of adapters. The application core
+contains the pure business logic, while the adapters each serve a
+specific *purpose*, generally to perform side effects. A thin "service
+layer" coordinates how the adapters and core interact. This allows
+different *technologies* to be plugged into the application to serve
+those different purposes. 
+
+With ports and adapters architecure, tests can reuse the adapters to
+perform the validation of the side effects which occur in an
+interaction. This is generally what a black box test lacks.
 
