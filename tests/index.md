@@ -12,12 +12,12 @@ share: false
 ads: false
 ---
 
-Once a functional specification is written, it can be used to write an
-automated test. The test will be written to automate the steps in the
-specification exactly as the user would perform them in the user
+Once a [functional specification](/specifications/) is written, it can
+be used to write an automated test. The test will perform the steps in
+the specification exactly as the user would perform them in the user
 interface. The preconditions and side effect assertions are set up and
 tested using the same language and platform the application is written
-in.
+in, and are called remotely from the user interface test.
 
 The libraries for user interface testing on mobile devices are
 unfortunately not as mature as what is available for web
@@ -26,14 +26,57 @@ will be added here.
 
 ## Web Applications
 
-The most mature testing tool for web applications is
+The most mature test automation tool for web applications is
 [Selenium](http://docs.seleniumhq.org). These days, front-end
 developers are very fluent in
 [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 and [NodeJS](https://nodejs.org), and since they are the ones who will
 be creating the user interface, they should be the ones writing the
-user interface tests. There is a fantastic, NodeJS-based frontend for
-Selenium called [Nightwatch](http://nightwatchjs.org) which provides a
-fluent, Javascript-based interface. This makes it very easy to convert
-a functional specification into an automated test.
+user interface tests. There is a NodeJS-based frontend for Selenium
+called [Nightwatch](http://nightwatchjs.org) which provides a fluent,
+Javascript-based interface. This makes it very easy to convert a
+functional specification into an automated test.
 
+The Nightwatch test can automate the browser interaction, but the
+backend of the application may not expose an API which allows it to
+assert the side effects it performs. It also may not be written in
+Javascript, but could be on any number of other platforms. For
+example, [Java](https://java.com). In order for the frontend to make
+those assertions, a separate test server is run along side the web
+application's server. It exposes a
+[REST](https://en.wikipedia.org/wiki/Representational_state_transfer)
+API over
+[HTTP](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol)
+which allows the user interface test to run setup routines and tests
+on the backend, and provides test data which can be used to coordinate
+between the front and back end tests. By using a standard REST
+HTTP-based protocol, any frontend can assert side effects on any
+backend, regardless of platform. This allows applications which have
+multiple front ends and/or multiple backends to reuse tests on either.
+
+### Example
+
+For this example, the Nightwatch frontend will access the
+[JUnit HTTP](https://github.com/dfox/junit-http) backend using the
+[nightwatch-js-remote-assert](https://github.com/dfox/nightwatch-js-remote-assert)
+plugins. These tools are available in the [tools](/tools/) section of
+the site.
+
+```javascript
+module.exports = {
+  'Notes can be saved' : browser => {
+    browser.loadTestData('notes.json', notes => {
+      browser
+        .url('http://localhost/notes')
+        .waitForElementVisible('body', 1000)
+        .setValue('input[id=note-name]', notes.save.name)
+        .setValue('textarea[id=note-content]', notes.save.contents)
+        .click('button[id=save-button]')
+        .pause(1000)
+        .assert.containsText('#status', 'Saved note: ' + notes.save.name)
+        .assert.remote('io.dfox.junit.http.example.ExampleTest', 'noteSaved')
+        .end();
+    });
+  }
+}
+```
