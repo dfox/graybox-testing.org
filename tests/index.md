@@ -138,20 +138,46 @@ backend which runs the test and reports its results to the plugin. The
 java test looks like this:
 
 ```java
-@Test
-public void noteSaved() throws IOException {
-    JsonNode notesFixture = getTestData("notes.json");
-    JsonNode noteFixture = notesFixture.path("save");
-    String name = noteFixture.path("name").asText();
-    String expectedContents = noteFixture.path("contents").asText();
-    
-    Optional<InputStream> note = repository.getNote(name);
-    assertTrue(note.isPresent());
-    try(InputStream stream = note.get()){
-        String contents = IOUtils.toString(stream);
-        assertEquals(expectedContents, contents);
+package io.dfox.junit.http.example;
+
+import org.apache.commons.io.IOUtils;
+import static io.dfox.junit.http.util.TestUtils.getTestData;
+import static org.junit.Assert.assertEquals;
+import com.fasterxml.jackson.databind.JsonNode;
+import java.io.IOException;
+import java.io.InputStream;
+import org.junit.Test;
+
+...
+
+public class ExampleTest {
+
+    private static NoteRepository repository;
+
+    @BeforeClass
+    public static void setUp() throws IOException {
+        final File tempDir = new File(System.getProperty("java.io.tmpdir"),
+                                      NoteRepository.class.getName());
+        repository = new NoteRepository(tempDir);
+        repository.init();
     }
-}
+
+    ...
+
+    @Test
+    public void noteSaved() throws IOException {
+        JsonNode notesFixture = getTestData("notes.json");
+        JsonNode noteFixture = notesFixture.path("save");
+        String name = noteFixture.path("name").asText();
+        String expectedContents = noteFixture.path("contents").asText();
+
+        Optional<InputStream> note = repository.getNote(name);
+        assertTrue(note.isPresent());
+        try(InputStream stream = note.get()){
+            String contents = IOUtils.toString(stream);
+            assertEquals(expectedContents, contents);
+        }
+    }
 ```
 
 Note how the test data is reused in the Java test by calling
