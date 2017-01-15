@@ -12,6 +12,13 @@ share: false
 ads: false
 ---
 
+As more tools are developed for this testing strategy, they will be
+added here. Soon there will be backends for Node.js testing with
+[Mocha](https://github.com/mochajs/mocha), Scala with
+[ScalaTest](http://www.scalatest.org), and a frontend for Android
+testing with
+[Espresso](https://developer.android.com/training/testing/ui-testing/espresso-testing.html).
+
 ### Selenium
 
 Selenium is a browser automation tool which allows tests to
