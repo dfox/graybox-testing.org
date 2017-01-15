@@ -67,9 +67,9 @@ in the previous section.
 
 The front end and back end tests will often need to coordinate with
 one another. In this example, the backend test will need to assert the
-presence of a note on the server, and test that its name and content
-are correct. Therefore it makes sense to have that information
-available to both tests to reduce duplication and brittleness.
+presence of a note on the server and that its name and content are
+correct. Therefore it makes sense to have that information available
+to both tests to reduce duplication and brittleness.
 
 Test data is simply a set of [JSON](http://json.org) files which are
 exposed by the test backend and are available in the Nightwatch test
@@ -93,7 +93,8 @@ saved in a file called **notes.json**, which looks like this:
 The frontend test needs a way to call the remote backend test. For
 this purpose there is a notion of a test group and test name.  The
 JUnit HTTP backend exposes the canonical name of the JUnit test class
-as the test group, while the name of each method annotated with @Test
+as the test group, while the name of each method annotated with
+[@Test](https://github.com/junit-team/junit4/wiki/Getting-started#create-a-test)
 becomes the test name. For this example, the test group will be
 **io.dfox.junit.http.example.ExampleTest** and the name of the test
 will be **noteSaved**.
