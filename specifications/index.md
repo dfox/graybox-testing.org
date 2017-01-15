@@ -14,10 +14,10 @@ ads: false
 
 In order to know what to test, there must first be a description of
 what the application is supposed to do. The easiest way to do that is
-with a functional specification that describes each feature. In order
-for the specification to be useful as a basis for an automated test
-and as a script for a human quality assurance person, it's written in
-a simple format that serves both purposes.
+with a functional specification that describes each feature. To allow
+the specification to be used as a basis for both an automated test and
+as a script for a human quality assurance person, it's written in a
+simple format that serves both purposes.
 
 ## Design by Contract
 
