@@ -101,8 +101,7 @@ will be **noteSaved**.
 
 #### Frontend Test
 
-Now both developers can start writing their tests. The Nightwatch test
-looks like this:
+The Nightwatch test looks like this:
 
 ```javascript
 module.exports = {
